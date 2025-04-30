@@ -13,6 +13,8 @@ export default function NewBooking() {
     date_time: '',
     service_id: ''
   });
+
+  
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(false);
   const [fetchingServices, setFetchingServices] = useState(true);
