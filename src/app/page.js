@@ -12,11 +12,14 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // backend url
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
+  // handle input change
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  // handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -37,7 +40,7 @@ export default function LoginPage() {
         throw new Error(result.message || 'Login failed');
       }
   
-      // Optional: Store token in localStorage or cookie
+      // Store token in localStorage
        localStorage.setItem('token', result.token);
   
       // Redirect to dashboard
@@ -56,15 +59,14 @@ export default function LoginPage() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8 space-y-6"
-      >
+        className="w-full max-w-md bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8 space-y-6">
+
         <div className="text-center">
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-3xl font-bold text-gray-900 dark:text-white"
-          >
+            className="text-3xl font-bold text-gray-900 dark:text-white" >
             Sign In
           </motion.h1>
           <p className="text-gray-500 dark:text-gray-300 text-sm py-2">
@@ -82,6 +84,7 @@ export default function LoginPage() {
           </motion.div>
         )}
 
+        {/* form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="relative">
             <FaUser className="absolute left-3 top-3 text-gray-400" />
@@ -96,6 +99,7 @@ export default function LoginPage() {
             />
           </div>
 
+          {/* Password */}
           <div className="relative">
             <FaLock className="absolute left-3 top-3 text-gray-400" />
             <input
@@ -109,6 +113,7 @@ export default function LoginPage() {
             />
           </div>
 
+          {/* Submit button */}
           <motion.button
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}

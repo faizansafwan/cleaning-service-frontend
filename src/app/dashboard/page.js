@@ -122,8 +122,7 @@ export default function Dashboard() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-3xl font-bold mb-6 text-indigo-700"
-      >
+        className="text-3xl font-bold mb-6 text-indigo-700">
         Booking List
       </motion.h1>
 
@@ -132,7 +131,10 @@ export default function Dashboard() {
       ) : bookings.length === 0 ? (
         <p className="text-gray-500">No bookings found</p>
       ) : (
+        // 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        {/* fetch booking list */}
           {bookings.map((booking) => (
             <motion.div
               key={booking.id}
@@ -142,87 +144,99 @@ export default function Dashboard() {
               className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition-shadow duration-300 border"
             >
               {editingId === booking.id ? (
+                
+                // form for update booking
                 <form onSubmit={handleUpdate}>
+
+                  {/* customer name */}
                   <input
                     type="text"
                     name="customer_name"
                     value={formData.customer_name}
                     onChange={handleChange}
                     className="w-full mb-2 px-3 py-2 border rounded"
-                    required
-                  />
+                    required />
+
+                {/* address */}
                   <input
                     type="text"
                     name="address"
                     value={formData.address}
                     onChange={handleChange}
                     className="w-full mb-2 px-3 py-2 border rounded"
-                    required
-                  />
+                    required />
+
+                {/* date time */}
                   <input
                     type="datetime-local"
                     name="date_time"
                     value={formData.date_time}
                     onChange={handleChange}
                     className="w-full mb-2 px-3 py-2 border rounded"
-                    required
-                  />
+                    required />
+
+                {/* Service Id  */}
                   <input
                     type="number"
                     name="service_id"
                     value={formData.service_id}
                     onChange={handleChange}
                     className="w-full mb-2 px-3 py-2 border rounded"
-                    required
-                  />
+                    required />
+
+                {/* save and cancel button */}
                   <div className="flex justify-end gap-3 mt-2">
                     <button
                       type="submit"
-                      className="bg-indigo-500 text-white px-4 py-1 rounded hover:bg-indigo-700"
-                    >
+                      className="bg-indigo-500 text-white px-4 py-1 rounded hover:bg-indigo-700" >
                       <FaCheck className="inline mr-1 cursor-pointer" /> Save
                     </button>
+
                     <button
                       type="button"
                       onClick={() => setEditingId(null)}
-                      className="bg-gray-300 px-4 py-1 rounded hover:bg-gray-400"
-                    >
+                      className="bg-gray-300 px-4 py-1 rounded hover:bg-gray-400" >
                       <FaTimes className="inline mr-1 cursor-pointer" /> Cancel
                     </button>
+
                   </div>
+
                 </form>
               ) : (
                 <>
+
                   <div className="flex items-center mb-2 text-indigo-600 font-medium">
                     <FaUser className="mr-2" /> {booking.customer_name}
                   </div>
+
                   <div className="flex items-center mb-2 text-gray-700">
                     <FaMapMarkerAlt className="mr-2" /> {booking.address}
                   </div>
+
                   <div className="flex items-center text-gray-600">
                     <FaCalendarAlt className="mr-2" />
                     {new Date(booking.date_time).toLocaleString()}
                   </div>
+
                   <p className="text-sm text-gray-600 mt-2">
                     Service: {booking.Service?.name || 'N/A'}
                   </p>
+
                   <div className="flex justify-end gap-4 mt-4">
-                    <button
-                      onClick={() => startEdit(booking)}
-                      className="text-blue-600 hover:underline cursor-pointer"
-                    >
-                      <FaEdit className="inline mr-1" /> Edit
+                    <button onClick={() => startEdit(booking)} className="text-blue-600 hover:underline cursor-pointer" >
+                        <FaEdit className="inline mr-1" /> Edit
                     </button>
-                    <button
-                      onClick={() => deleteBooking(booking.id)}
-                      className="text-red-600 hover:underline cursor-pointer"
-                    >
+
+                    <button onClick={() => deleteBooking(booking.id)} className="text-red-600 hover:underline cursor-pointer" >
                       <FaTrash className="inline mr-1" /> Delete
                     </button>
                   </div>
+
                 </>
               )}
+
             </motion.div>
+
           ))}
         </div>
       )}
