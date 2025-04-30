@@ -1,8 +1,52 @@
+# Cleaning Service Management System Frontend (Next.js)
+
+This is a modern, responsive frontend application built with **Next.js 14 (App Router)**. It provides a dashboard to display, edit, and delete booking records from an authenticated API.
+
+## Features
+
+-  Authentication via Bearer token
+-  Fetch and display bookings
+-  Edit and update bookings
+-  Delete bookings with confirmation
+-  Tailwind CSS styling
+-  Framer Motion animations
+-  React Icons for visuals
+-  Toast notifications via `react-toastify`
+
+## Tech Stack
+
+- **Framework:** [Next.js 14+](https://nextjs.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Icons:** [React Icons](https://react-icons.github.io/react-icons/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Notifications:** [React Toastify](https://fkhadra.github.io/react-toastify/)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/faizansafwan/cleaning-service-frontend.git
+cd cleaning-service-frontend
+```
+### 2. Install dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### 3. Configure environment variables
+Create a .env file in the root of the project and add your API base URL:
+
+NEXT_PUBLIC_API_BASE_URL=http://localhost:5000/
+
+
+### 4. run the development server
 
 ```bash
 npm run dev
@@ -16,9 +60,7 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More
 
