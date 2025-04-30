@@ -86,6 +86,8 @@ export default function LoginPage() {
 
         {/* form */}
         <form onSubmit={handleSubmit} className="space-y-4">
+
+          {/* username */}
           <div className="relative">
             <FaUser className="absolute left-3 top-3 text-gray-400" />
             <input
