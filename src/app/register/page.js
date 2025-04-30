@@ -32,8 +32,8 @@ export default function Signup() {
     }
 
     try {
-      // Replace this with real backend POST request
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/signup`, {
+      // 
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}user/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
@@ -44,10 +44,12 @@ export default function Signup() {
       if (!res.ok) throw new Error(data.message || 'Signup failed.');
 
       // Redirect or show success
-      router.push('/login');
-    } catch (err) {
+      router.push('/');
+    } 
+    catch (err) {
       setError(err.message);
-    } finally {
+    } 
+    finally {
       setLoading(false);
     }
   };
@@ -144,7 +146,7 @@ export default function Signup() {
 
         <p className="text-sm text-center text-gray-600 dark:text-gray-300">
           Already have an account?{' '}
-          <a href="/login" className="text-blue-600 hover:underline">
+          <a href="/" className="text-blue-600 hover:underline">
             Login
           </a>
         </p>
