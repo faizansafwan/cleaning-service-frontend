@@ -17,7 +17,9 @@ export default function Dashboard() {
     service_id: ''
   });
 
+  // Backend url   
   const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL;
+
   const token = typeof window !== 'undefined' && localStorage.getItem('token');
 
   // Fetch bookings
